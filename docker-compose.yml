@@ -1,0 +1,8 @@
+version: '3'
+services:
+  samba:
+    image: coboware/atomic-host-samba
+    container_name: samba
+    network_mode: host
+    volumes:
+      - ~/share:/share
