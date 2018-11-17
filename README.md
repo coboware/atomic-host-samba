@@ -6,15 +6,17 @@ Special for MACos the image contains avahi and .DS_Store ._* files are deleted.
 ## Settings 
 For simplicity the samba credentials are share/share.
 
+
 ### share in homedir
 Make sure to set the right permissions on the share directory ont the host workstation. 
 
-### Network host
+
+## Network host
 ```shell
 docker run -d  --restart=always --network host -v /path/to/share/:/share --name samba coboware/atomic-host-samba
 ```
 
-### With port mapping
+## With port mapping
 Supplying port mappings only instead of --network=host might be subject to the limitations outlined above:
 ```shell
 docker run -d --restart=always -p 137:137/udp -p 138:138/udp -p 139:139 -p 445:445  -v /path/to/share/:/share --name samba coboware/atomic-host-samba
@@ -24,4 +26,13 @@ docker run -d --restart=always -p 137:137/udp -p 138:138/udp -p 139:139 -p 445:4
 ```shell
 docker-compose -p samba -f docker-compose.yml
 ```
-
+```shell
+version: '3'
+services:
+  samba:
+    image: coboware/atomic-host-samba
+    container_name: samba
+    network_mode: host
+    volumes:
+      - ~/share:/share
+```
