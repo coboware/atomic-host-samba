@@ -11,13 +11,13 @@ Make sure to set the right permissions on the share directory ont the host works
 
 ### Network host
 ```shell
-docker run -d  --restart=always --network host -v /path/to/share/:/shared --name samba coboware/atomic-host-samba
+docker run -d  --restart=always --network host -v /path/to/share/:/share --name samba coboware/atomic-host-samba
 ```
 
 ### With port mapping
 Supplying port mappings only instead of --network=host might be subject to the limitations outlined above:
 ```shell
-docker run -d --restart=always -p 137:137/udp -p 138:138/udp -p 139:139 -p 445:445  -v /path/to/share/:/shared --name samba coboware/atomic-host-samba
+docker run -d --restart=always -p 137:137/udp -p 138:138/udp -p 139:139 -p 445:445  -v /path/to/share/:/share --name samba coboware/atomic-host-samba
 ```
 
 ### Docker Compose
