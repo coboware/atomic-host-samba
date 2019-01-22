@@ -15,6 +15,9 @@ RUN apk update && apk upgrade && \
 COPY smb.conf /etc/samba/smb.conf
 COPY supervisord.conf /etc/supervisord.conf
 
+# daemon
+USER share
+
 # create a samba user matching our user from above with a very simple password ("letsdance")
 RUN echo -e "share\nshare" | smbpasswd -a -s -c /etc/samba/smb.conf share && \
   sed -i 's/#enable-dbus=yes/enable-dbus=no/g' /etc/avahi/avahi-daemon.conf
