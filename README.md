@@ -1,5 +1,5 @@
-# Atomic Host Samba
-This container adds samba sharing on atomic host, which enables remote development.
+# Atomic Host Samba Sidecar
+This sidecar container adds samba sharing on atomic host, which enables remote development.
 
 Special for MACos the image contains avahi and .DS_Store ._* files are deleted.
 
